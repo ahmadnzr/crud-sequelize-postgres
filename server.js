@@ -25,6 +25,7 @@ app.get("/", (req, res) => {
 });
 
 require("./app/routes/tutorial.routes")(app);
+require("./app/routes/comment.routes")(app);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {

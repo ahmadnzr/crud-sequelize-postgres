@@ -19,5 +19,13 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.tutorials = require("./tutorial.model.js")(sequelize, Sequelize);
+db.comments = require("./comment.model.js")(sequelize, Sequelize);
+
+db.tutorials.hasMany(db.comments, { as: "comments", onDelete: "CASCADE" });
+db.comments.belongsTo(db.tutorials, {
+  foreignKey: "tutorialId",
+  as: "tutorial",
+  onDelete: "CASCADE",
+});
 
 module.exports = db;

@@ -44,7 +44,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  Tutorial.findByPk(id)
+  Tutorial.findByPk(id, { include: ["comments"] })
     .then((data) => {
       return res.status(200).json(data);
     })
